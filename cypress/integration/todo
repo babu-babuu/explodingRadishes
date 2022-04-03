@@ -1,0 +1,26 @@
+- data to fixtures - OK
+- url to cypress json - OK
+- custom commands - Ok
+- check naming 
+- call one test in another
+- reusable components -> i think i makes sense as long as it is few tests. I would go throught API -> you need to have the data there (prepared) and you are
+validating the rest -> it does not have to be done via clicking. 
+
+
+import items from '../fixtures/items.json'
+import selectors from './selectors'
+
+describe('adds given to dos and validates the state', () => {
+  	cy.on('uncaught:exception', (err) => {
+		return true
+	})
+    it('navigates to the page', () => {
+      cy.navigateToUrl('/')
+      cy.fixture('items').as('items')
+      cy.enterValue(selectors.inputField, items.TODO_ITEM_ONE)
+      cy.enterValue(selectors.inputField, items.TODO_ITEM_TWO)
+      cy.validateText(selectors.noteRow(1), items.TODO_ITEM_ONE)
+      cy.validateText(selectors.noteRow(2), items.TODO_ITEM_TWO)
+      cy.validateNumberOfElements(selectors.noteBulk, 2)
+  })
+})

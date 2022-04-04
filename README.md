@@ -6,7 +6,7 @@ This projects should serve as a test project for guys and girls in cloudTalk.
 To run the test:
 -> please clone the repo
 -> go to explofingRadishes folder
--> run npm cypress open to run them in cypress GUI
+-> run npx cypress open to run them in cypress GUI
 
 Test case 1: add To Do Item
 Test case 2: toggle and validate Note
